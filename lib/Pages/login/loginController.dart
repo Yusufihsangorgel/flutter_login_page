@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   var showPassword = true.obs;
   var username = ''.obs;
+  var eMail = ''.obs;
   RxnString errorText = RxnString(null);
-  Rxn<Function()> submitFunc = Rxn<Function()>(null);
 
   @override
   void onInit() {
@@ -24,11 +24,9 @@ class LoginController extends GetxController {
 
   void validations(String val) async {
     errorText.value = null; // reset validation errors to nothing
-    submitFunc.value = null; // disable submit while validating
     if (val.isNotEmpty) {
-      if (lengthOK(val) && await available(val)) {
+      if (lengthOK(val)) {
         debugPrint('All validations passed, enable submit btn...');
-        submitFunc.value = submitFunction();
         errorText.value = null;
       }
     }
@@ -36,19 +34,7 @@ class LoginController extends GetxController {
 
   bool lengthOK(String val, {int minLen = 5}) {
     if (val.length < minLen) {
-      errorText.value = 'min. 5 chars';
-      return false;
-    }
-    return true;
-  }
-
-  Future<bool> available(String val) async {
-    debugPrint('Query availability of: $val');
-    await Future.delayed(
-        const Duration(seconds: 1), () => print('Available query returned'));
-
-    if (val == "Sylvester") {
-      errorText.value = 'Name Taken';
+      errorText.value = 'Minimum 5 karakter';
       return false;
     }
     return true;
@@ -58,12 +44,5 @@ class LoginController extends GetxController {
     username.value = val;
   }
 
-  Future<bool> Function() submitFunction() {
-    return () async {
-      debugPrint('Make database call to create ${username.value} account');
-      await Future.delayed(
-          const Duration(seconds: 1), () => debugPrint('User account created'));
-      return true;
-    };
-  }
+  void eMailChanged(String val) {}
 }
