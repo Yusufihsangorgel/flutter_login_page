@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login_screen/Pages/forgot/forgotScreen.dart';
+import 'package:flutter_login_screen/Pages/login/forgotScreen.dart';
 import 'package:flutter_login_screen/Pages/home/home.dart';
 import 'package:flutter_login_screen/Pages/login/loginController.dart';
 import 'package:flutter_login_screen/widgets/mySize.dart';
@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                MySize(),
+                                const MySize(),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 30, right: 30),
@@ -147,9 +147,7 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
+                                const MySize(),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 30, right: 30),
@@ -194,7 +192,7 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                MySize(),
+                                const MySize(),
                                 if (loginController.getRegister.isTrue)
                                   Padding(
                                     padding: const EdgeInsets.only(
@@ -251,8 +249,9 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 TextButton(
                                   child: loginController.getRegister.isFalse
-                                      ? Text("Kayıt Ol")
-                                      : Text("Zaten bir hesabınız var mı?"),
+                                      ? const Text("Kayıt Ol")
+                                      : const Text(
+                                          "Zaten bir hesabınız var mı?"),
                                   onPressed: () {
                                     loginController.registerWidget();
                                     debugPrint(loginController.getRegister.value

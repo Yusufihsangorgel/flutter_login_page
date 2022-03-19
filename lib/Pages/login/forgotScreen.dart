@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login_screen/Pages/forgot/forgotController.dart';
 import 'package:flutter_login_screen/Pages/login/loginController.dart';
 import 'package:flutter_login_screen/Pages/login/loginScreen.dart';
 import 'package:flutter_login_screen/widgets/mySize.dart';
@@ -9,7 +8,6 @@ import 'dart:io' show Platform;
 
 class ForgotScreen extends StatelessWidget {
   ForgotScreen({Key? key}) : super(key: key);
-  final ForgotController forgotController = Get.put(ForgotController());
   final LoginController loginController = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {

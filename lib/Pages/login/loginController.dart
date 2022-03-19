@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class LoginController extends GetxController {
   var showPassword = true.obs;
-  var username = ''.obs;
+
   var eMail = ''.obs;
   var getRegister = false.obs;
 
@@ -12,7 +12,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    debounce<String>(username, validations,
+    debounce<String>(eMail, validations,
         time: const Duration(milliseconds: 500));
   }
 
@@ -33,10 +33,9 @@ class LoginController extends GetxController {
   }
 
   void validations(String val) async {
-    errorText.value = null; // reset validation errors to nothing
+    errorText.value = null;
     if (val.isNotEmpty) {
       if (lengthOK(val)) {
-        debugPrint('All validations passed, enable submit btn...');
         errorText.value = null;
       }
     }
@@ -51,7 +50,7 @@ class LoginController extends GetxController {
   }
 
   void usernameChanged(String val) {
-    username.value = val;
+    eMail.value = val;
   }
 
   void eMailChanged(String val) {}
