@@ -5,6 +5,8 @@ class LoginController extends GetxController {
   var showPassword = true.obs;
   var username = ''.obs;
   var eMail = ''.obs;
+  var getRegister = false.obs;
+
   RxnString errorText = RxnString(null);
 
   @override
@@ -19,6 +21,14 @@ class LoginController extends GetxController {
       showPassword.value = false;
     } else {
       showPassword.value = true;
+    }
+  }
+
+  void registerWidget() {
+    if (getRegister.isFalse) {
+      getRegister.value = true;
+    } else {
+      getRegister.value = false;
     }
   }
 
